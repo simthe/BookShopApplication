@@ -1,0 +1,20 @@
+<h1 id="tableLabel">All books available</h1>
+<p *ngIf="!books"><em>Loading...</em></p>
+
+<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="books">
+  <thead>
+    <tr>
+      <th>Book Name</th>
+      <th>Book Description</th>
+      <th>Price</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let book of books">
+      <td>{{ book.name }}</td>
+      <td>{{ book.text }}</td>
+      <td>{{ book.purchasePrice }}</td>
+      <td *ngIf="activeUser" ><button class="btn btn-primary" (click)="subscribe(book)" [disabled]="!canSubscribe(book.id)">Subscribe</button></td>
+    </tr>
+  </tbody>
+</table>
